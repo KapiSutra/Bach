@@ -1,0 +1,45 @@
+﻿{
+  "FileVersion": 3,
+  "Version": 1,
+  "VersionName": "1.0",
+  "FriendlyName": "Bach",
+  "Description": "",
+  "Category": "Other",
+  "CreatedBy": "tarnishablec",
+  "CreatedByURL": "https://github.com/tarnishablec",
+  "DocsURL": "",
+  "MarketplaceURL": "",
+  "CanContainContent": true,
+  "IsBetaVersion": true,
+  "IsExperimentalVersion": false,
+  "Installed": false,
+  "Modules": [
+    {
+      "Name": "Bach",
+      "Type": "Runtime",
+      "LoadingPhase": "Default"
+    }
+  ],
+  "Plugins": [
+    {
+      "Name": "Morzat",
+      "Enabled": true,
+      "Optional": false
+    },
+    {
+      "Name": "StateTree",
+      "Enabled": true,
+      "Optional": false
+    },
+    {
+      "Name": "GameplayStateTree",
+      "Enabled": true,
+      "Optional": false
+    },
+    {
+      "Name": "GameplayAbilities",
+      "Enabled": true,
+      "Optional": false
+    }
+  ]
+}
