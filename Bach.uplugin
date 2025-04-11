@@ -40,6 +40,11 @@
       "Name": "GameplayAbilities",
       "Enabled": true,
       "Optional": false
+    },
+    {
+      "Name": "EnhancedInput",
+      "Enabled": true,
+      "Optional": false
     }
   ]
 }

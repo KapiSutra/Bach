@@ -8,7 +8,7 @@ public class Bach : ModuleRules
 {
     public Bach(ReadOnlyTargetRules Target) : base(Target)
     {
-        PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
+        PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
         PublicIncludePaths.AddRange(
             new string[]
@@ -42,7 +42,14 @@ public class Bach : ModuleRules
                 "Engine",
                 "Slate",
                 "SlateCore",
-                "Morzat"
+                "Morzat",
+                "EnhancedInput",
+                "AnimGraphRuntime",
+                "GameplayTags",
+                "StateTreeModule",
+                "GameplayAbilities",
+                "GameplayStateTreeModule",
+                "AIModule"
                 // ... add private dependencies that you statically link with here ...	
             }
         );
