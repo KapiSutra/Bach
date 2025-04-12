@@ -44,8 +44,6 @@ struct BACH_API FBachIgnoreMoveInput : public FStateTreeTaskCommonBase
     {
         const auto& InstanceData = Context.GetInstanceData(*this);
 
-        const auto Result = Super::EnterState(Context, Transition);
-
         InstanceData.Controller = InstanceData.Pawn->GetController();
 
         if (InstanceData.Controller.IsValid())
@@ -54,7 +52,7 @@ struct BACH_API FBachIgnoreMoveInput : public FStateTreeTaskCommonBase
             InstanceData.bLastTickShouldIgnore = InstanceData.bIsCurrentMoveInputIgnored;
         }
 
-        return Result;
+        return EStateTreeRunStatus::Running;
     }
 
     virtual EStateTreeRunStatus Tick(FStateTreeExecutionContext& Context, const float DeltaTime) const override

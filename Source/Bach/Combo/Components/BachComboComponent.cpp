@@ -9,6 +9,11 @@
 
 UE_DEFINE_GAMEPLAY_TAG(Tag_StateTreeEvent_BachComboInput, "StateTreeEvent.Bach.Combo.ComboInput");
 
+namespace Bach
+{
+    const FGameplayTag DefaultComboEventTag = Tag_StateTreeEvent_BachComboInput;
+}
+
 // Sets default values for this component's properties
 UBachComboComponent::UBachComboComponent()
 {
@@ -20,6 +25,7 @@ UBachComboComponent::UBachComboComponent()
 
     ComboWindowNotifyState = UAnimNotifyState_BachComboWindow::StaticClass();
 }
+
 
 bool UBachComboComponent::SetContextRequirements(FStateTreeExecutionContext& Context, bool bLogErrors)
 {
@@ -35,24 +41,9 @@ TSubclassOf<UStateTreeSchema> UBachComboComponent::GetSchema() const
 // Called when the game starts
 void UBachComboComponent::BeginPlay()
 {
+    PostActorContextUpdated.AddUniqueDynamic(this, &ThisClass::HandleActorContextUpdated);
+//
     Super::BeginPlay();
-
-    // ...
-
-    if (!ActorContext.MeshComponent)
-    {
-        return;
-    }
-
-    const auto AnimInstance = ActorContext.MeshComponent->GetAnimInstance();
-
-    if (!AnimInstance)
-    {
-        return;
-    }
-
-    AnimInstance->OnPlayMontageNotifyBegin.AddDynamic(this, &ThisClass::HandleAvatarMontageNotify);
-    AnimInstance->OnPlayMontageNotifyEnd.AddDynamic(this, &ThisClass::HandleAvatarMontageNotify);
 }
 
 FBachComboInfoSummary UBachComboComponent::GetComboInfoSummary() const
@@ -166,4 +157,26 @@ void UBachComboComponent::HandleAvatarMontageNotify(FName NotifyName,
     }
 
     OnCrossComboWindow.Broadcast(GetComboInfoSummary().ComboWindowState == EBachComboWindowState::InsideComboWindow);
+}
+
+void UBachComboComponent::HandleMeshAnimInitialized()
+{
+    const auto AnimInstance = ActorContext.MeshComponent->GetAnimInstance();
+
+    if (!AnimInstance)
+    {
+        return;
+    }
+
+    AnimInstance->OnPlayMontageNotifyBegin.AddUniqueDynamic(this, &ThisClass::HandleAvatarMontageNotify);
+    AnimInstance->OnPlayMontageNotifyEnd.AddUniqueDynamic(this, &ThisClass::HandleAvatarMontageNotify);
+}
+
+
+void UBachComboComponent::HandleActorContextUpdated()
+{
+    if (ActorContext.MeshComponent)
+    {
+        ActorContext.MeshComponent->OnAnimInitialized.AddUniqueDynamic(this, &ThisClass::HandleMeshAnimInitialized);
+    }
 }

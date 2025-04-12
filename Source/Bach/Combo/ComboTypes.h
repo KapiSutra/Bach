@@ -4,8 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "InputAction.h"
-#include "BachTypes.generated.h"
+#include "ComboTypes.generated.h"
 
+
+class UGameplayAbility;
+class UBachComboComponent;
 
 UENUM(BlueprintType, meta=(Bitflags, UseEnumValuesAsMaskValuesInEditor = "true"))
 enum class EBachComboWindowState : uint8
@@ -53,3 +56,4 @@ struct BACH_API FBachComboInputEventPayload
     UPROPERTY(BlueprintReadWrite)
     TObjectPtr<UInputAction> InputAction;
 };
+

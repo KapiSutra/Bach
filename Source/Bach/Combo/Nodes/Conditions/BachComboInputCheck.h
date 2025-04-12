@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "StateTreeConditionBase.h"
 #include "StateTreeExecutionContext.h"
-#include "Bach/Combo/BachTypes.h"
+#include "Bach/Combo/ComboTypes.h"
 #include "BachComboInputCheck.generated.h"
 
 class UInputAction;

@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "StateTreeExecutionContext.h"
 #include "StateTreePropertyFunctionBase.h"
-#include "Bach/Combo/BachTypes.h"
+#include "Bach/Combo/ComboTypes.h"
 #include "Bach/Combo/Components/BachComboComponent.h"
 #include "BachGetComboInfoSummary.generated.h"
 
