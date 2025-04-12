@@ -3,36 +3,52 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "StateTreeConditionBase.h"
 #include "StateTreeExecutionContext.h"
 #include "Bach/Combo/BachTypes.h"
-#include "Blueprint/StateTreeConditionBlueprintBase.h"
 #include "BachComboInputCheck.generated.h"
 
 class UInputAction;
-/**
- * 
- */
-UCLASS(DisplayName = "Combo Input Check (Bach)")
-class BACH_API UBachComboInputCheck : public UStateTreeConditionBlueprintBase
+
+USTRUCT()
+struct FBachComboInputCheckInstanceData
 {
     GENERATED_BODY()
 
-public:
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(EditAnywhere)
     TObjectPtr<UInputAction> MatchInput;
 
-    UPROPERTY(BlueprintReadOnly, EditInstanceOnly)
+    UPROPERTY(EditInstanceOnly)
     bool Invert = false;
+};
+
+/**
+ * 
+ */
+USTRUCT(DisplayName = "Combo Input Check (Bach)")
+struct BACH_API FBachComboInputCheck : public FStateTreeConditionCommonBase
+{
+    GENERATED_BODY()
+
+    using FInstanceDataType = FBachComboInputCheckInstanceData;
+    virtual const UStruct* GetInstanceDataType() const override { return FInstanceDataType::StaticStruct(); };
 
     virtual bool TestCondition(FStateTreeExecutionContext& Context) const override
     {
         const auto Events = Context.GetEventsToProcessView();
+        const auto& [MatchInput, Invert] = Context.GetInstanceData(*this);
 
         for (auto&& Event : Events)
         {
-            const auto& [InputAction] = Event.Get()->Payload.Get<FBachComboInputEventPayload>();
-            const auto Result = InputAction == this->MatchInput;
-            return Invert ? !Result : Result;
+            if (Event.IsValid())
+            {
+                const auto* Payload = Event->Payload.GetPtr<FBachComboInputEventPayload>();
+                if (Payload)
+                {
+                    const auto Result = Payload->InputAction == MatchInput;
+                    return Invert ? !Result : Result;
+                }
+            }
         }
 
         return Invert;

@@ -3,67 +3,78 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Blueprint/StateTreeTaskBlueprintBase.h"
+#include "StateTreeExecutionContext.h"
+#include "StateTreeTaskBase.h"
 #include "BachIgnoreMoveInput.generated.h"
 
-/**
- * 
- */
-UCLASS(DisplayName = "Ignore Move Input (Bach)")
-class BACH_API UBachIgnoreMoveInput : public UStateTreeTaskBlueprintBase
+
+USTRUCT()
+struct FBachIgnoreMoveInputInstanceData
 {
     GENERATED_BODY()
 
-public:
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(EditAnywhere)
     TObjectPtr<APawn> Pawn;
 
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(EditAnywhere)
     bool bShouldIgnore = false;
 
     //
 
+    UPROPERTY()
+    mutable TWeakObjectPtr<AController> Controller;
+    mutable bool bIsCurrentMoveInputIgnored = false;
+    mutable bool bLastTickShouldIgnore = false;
+};
+
+/**
+ * 
+ */
+USTRUCT(DisplayName = "Ignore Move Input (Bach)")
+struct BACH_API FBachIgnoreMoveInput : public FStateTreeTaskCommonBase
+{
+    GENERATED_BODY()
+
+    using FInstanceDataType = FBachIgnoreMoveInputInstanceData;
+
+    virtual const UStruct* GetInstanceDataType() const override { return FInstanceDataType::StaticStruct(); };
+
     virtual EStateTreeRunStatus EnterState(FStateTreeExecutionContext& Context,
-                                           const FStateTreeTransitionResult& Transition) override
+                                           const FStateTreeTransitionResult& Transition) const override
     {
+        const auto& InstanceData = Context.GetInstanceData(*this);
+
         const auto Result = Super::EnterState(Context, Transition);
 
-        Controller = Pawn->GetController();
+        InstanceData.Controller = InstanceData.Pawn->GetController();
 
-        if (Controller.IsValid())
+        if (InstanceData.Controller.IsValid())
         {
-            bIsCurrentMoveInputIgnored = Controller->IsMoveInputIgnored();
-            bLastTickShouldIgnore = bIsCurrentMoveInputIgnored;
+            InstanceData.bIsCurrentMoveInputIgnored = InstanceData.Controller->IsMoveInputIgnored();
+            InstanceData.bLastTickShouldIgnore = InstanceData.bIsCurrentMoveInputIgnored;
         }
 
         return Result;
     }
 
-    virtual EStateTreeRunStatus Tick(FStateTreeExecutionContext& Context, const float DeltaTime) override
+    virtual EStateTreeRunStatus Tick(FStateTreeExecutionContext& Context, const float DeltaTime) const override
     {
         const auto Result = Super::Tick(Context, DeltaTime);
+        const auto& InstanceData = Context.GetInstanceData(*this);
 
-
-        if (Controller.IsValid())
+        if (InstanceData.Controller.IsValid())
         {
-            const auto IgnoreChanged = bShouldIgnore != bLastTickShouldIgnore;
+            const auto IgnoreChanged = InstanceData.bShouldIgnore != InstanceData.bLastTickShouldIgnore;
 
             if (IgnoreChanged)
             {
-                Controller->SetIgnoreMoveInput(bShouldIgnore);
+                InstanceData.Controller->SetIgnoreMoveInput(InstanceData.bShouldIgnore);
             }
 
-            bIsCurrentMoveInputIgnored = Controller->IsMoveInputIgnored();
-            bLastTickShouldIgnore = bShouldIgnore;
+            InstanceData.bIsCurrentMoveInputIgnored = InstanceData.Controller->IsMoveInputIgnored();
+            InstanceData.bLastTickShouldIgnore = InstanceData.bShouldIgnore;
         }
 
         return Result;
     }
-
-protected:
-    UPROPERTY()
-    TWeakObjectPtr<AController> Controller;
-
-    bool bIsCurrentMoveInputIgnored = false;
-    bool bLastTickShouldIgnore = false;
 };
