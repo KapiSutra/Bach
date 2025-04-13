@@ -17,7 +17,7 @@ struct FBachComboWindowCheckInstanceData
     TObjectPtr<UBachComboComponent> Component;
 
     UPROPERTY(EditAnywhere, meta=(Bitmask, BitmaskEnum="/Script/Bach.EBachComboWindowState"))
-    int32 MatchState;
+    int32 MatchState = 0;
 };
 
 

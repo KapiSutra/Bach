@@ -6,6 +6,7 @@
 #include "StateTree.h"
 #include "Bach/Combo/Animation/AnimNotifyState_BachComboWindow.h"
 #include "Bach/Combo/Schema/BachComboSchema.h"
+#include "Kismet/GameplayStatics.h"
 
 UE_DEFINE_GAMEPLAY_TAG(Tag_StateTreeEvent_BachComboInput, "StateTreeEvent.Bach.Combo.ComboInput");
 
@@ -41,8 +42,8 @@ TSubclassOf<UStateTreeSchema> UBachComboComponent::GetSchema() const
 // Called when the game starts
 void UBachComboComponent::BeginPlay()
 {
-    PostActorContextUpdated.AddUniqueDynamic(this, &ThisClass::HandleActorContextUpdated);
-//
+    OnActorContextUpdated.AddUniqueDynamic(this, &ThisClass::HandleActorContextUpdated);
+    //
     Super::BeginPlay();
 }
 

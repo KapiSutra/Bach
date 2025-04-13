@@ -44,6 +44,8 @@ public:
     UFUNCTION(BlueprintPure)
     FBachComboInfoSummary GetComboInfoSummary() const;
 
+    FBachComboInfoSummary ComboInfoSummaryCache;
+
     UFUNCTION(BlueprintCallable)
     void SendComboInputEvent(UPARAM(meta=()) const FGameplayTag Tag,
                              const FBachComboInputEventPayload& Payload);

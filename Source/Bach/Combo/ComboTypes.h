@@ -45,6 +45,7 @@ struct BACH_API FBachComboInfoSummary
 
     UPROPERTY(BlueprintReadOnly, EditAnywhere)
     float CurrentComboWindowDuration = -1.f;
+
 };
 
 
