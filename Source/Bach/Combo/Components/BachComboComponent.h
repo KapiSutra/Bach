@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "NativeGameplayTags.h"
 #include "Bach/Combo/ComboTypes.h"
-#include "Morzat/Component/MorzatStateTreeComponent.h"
+#include "Treecko/Component/TreeckoStateComponent.h"
 #include "BachComboComponent.generated.h"
 
 class UAnimNotify_PlayMontageNotifyWindow;
@@ -19,7 +19,7 @@ namespace Bach
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FBachCrossComboWindowDelegate, bool, bWindowOpen);
 
 UCLASS(ClassGroup=(Bach), meta=(BlueprintSpawnableComponent))
-class BACH_API UBachComboComponent : public UMorzatStateTreeComponent
+class BACH_API UBachComboComponent : public UTreeckoStateComponent
 {
     GENERATED_BODY()
 

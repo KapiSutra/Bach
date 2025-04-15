@@ -22,7 +22,7 @@
   ],
   "Plugins": [
     {
-      "Name": "Morzat",
+      "Name": "Treecko",
       "Enabled": true,
       "Optional": false
     },

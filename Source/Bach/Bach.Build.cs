@@ -42,7 +42,7 @@ public class Bach : ModuleRules
                 "Engine",
                 "Slate",
                 "SlateCore",
-                "Morzat",
+                "Treecko",
                 "EnhancedInput",
                 "AnimGraphRuntime",
                 "GameplayTags",

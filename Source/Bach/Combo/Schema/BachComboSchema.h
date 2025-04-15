@@ -3,14 +3,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Morzat/Schema/MorzatStateTreeSchema.h"
+#include "Treecko/Schema/TreeckoStateSchema.h"
 #include "BachComboSchema.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class BACH_API UBachComboSchema : public UMorzatStateTreeSchema
+class BACH_API UBachComboSchema : public UTreeckoStateSchema
 {
     GENERATED_BODY()
 };
