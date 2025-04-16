@@ -4,20 +4,20 @@
 
 #include "CoreMinimal.h"
 #include "AnimNotifies/AnimNotify_PlayMontageNotify.h"
-#include "AnimNotifyState_BachComboWindow.generated.h"
+#include "AnimNotifyState_ScizorComboWindow.generated.h"
 
 /**
  * 
  */
-UCLASS(DisplayName = "Combo Window (Bach)")
-class BACH_API UAnimNotifyState_BachComboWindow : public UAnimNotify_PlayMontageNotifyWindow
+UCLASS(DisplayName = "Combo Window (Scizor)")
+class BACH_API UAnimNotifyState_ScizorComboWindow : public UAnimNotify_PlayMontageNotifyWindow
 {
     GENERATED_BODY()
 
-    UAnimNotifyState_BachComboWindow()
+    UAnimNotifyState_ScizorComboWindow()
     {
         bIsNativeBranchingPoint = true;
-        NotifyName = TEXT("Bach ComboWindow");
+        NotifyName = TEXT("Scizor ComboWindow");
 #if WITH_EDITOR
         bShouldFireInEditor = false;
 #endif

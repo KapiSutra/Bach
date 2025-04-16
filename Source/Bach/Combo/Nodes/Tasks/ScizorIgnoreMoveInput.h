@@ -5,11 +5,11 @@
 #include "CoreMinimal.h"
 #include "StateTreeExecutionContext.h"
 #include "StateTreeTaskBase.h"
-#include "BachIgnoreMoveInput.generated.h"
+#include "ScizorIgnoreMoveInput.generated.h"
 
 
 USTRUCT()
-struct FBachIgnoreMoveInputInstanceData
+struct FScizorIgnoreMoveInputInstanceData
 {
     GENERATED_BODY()
 
@@ -30,12 +30,12 @@ struct FBachIgnoreMoveInputInstanceData
 /**
  * 
  */
-USTRUCT(DisplayName = "Ignore Move Input (Bach)")
-struct BACH_API FBachIgnoreMoveInput : public FStateTreeTaskCommonBase
+USTRUCT(DisplayName = "Ignore Move Input (Scizor)")
+struct BACH_API FScizorIgnoreMoveInput : public FStateTreeTaskCommonBase
 {
     GENERATED_BODY()
 
-    using FInstanceDataType = FBachIgnoreMoveInputInstanceData;
+    using FInstanceDataType = FScizorIgnoreMoveInputInstanceData;
 
     virtual const UStruct* GetInstanceDataType() const override { return FInstanceDataType::StaticStruct(); };
 

@@ -6,7 +6,7 @@
 #include "StateTreeConditionBase.h"
 #include "StateTreeExecutionContext.h"
 #include "Bach/Combo/ComboTypes.h"
-#include "BachComboInputCheck.generated.h"
+#include "ScizorComboInputCheck.generated.h"
 
 class UInputAction;
 
@@ -25,8 +25,8 @@ struct FBachComboInputCheckInstanceData
 /**
  * 
  */
-USTRUCT(DisplayName = "Combo Input Check (Bach)")
-struct BACH_API FBachComboInputCheck : public FStateTreeConditionCommonBase
+USTRUCT(DisplayName = "Combo Input Check (Scizor)")
+struct BACH_API FScizorComboInputCheck : public FStateTreeConditionCommonBase
 {
     GENERATED_BODY()
 
@@ -42,7 +42,7 @@ struct BACH_API FBachComboInputCheck : public FStateTreeConditionCommonBase
         {
             if (Event.IsValid())
             {
-                const auto* Payload = Event->Payload.GetPtr<FBachComboInputEventPayload>();
+                const auto* Payload = Event->Payload.GetPtr<FScizorComboInputEventPayload>();
                 if (Payload)
                 {
                     const auto Result = Payload->InputAction == MatchInput;

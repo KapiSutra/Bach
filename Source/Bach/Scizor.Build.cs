@@ -4,9 +4,9 @@ using UnrealBuildTool;
 
 // ReSharper disable UseCollectionExpression
 
-public class Bach : ModuleRules
+public class Scizor : ModuleRules
 {
-    public Bach(ReadOnlyTargetRules Target) : base(Target)
+    public Scizor(ReadOnlyTargetRules Target) : base(Target)
     {
         PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 

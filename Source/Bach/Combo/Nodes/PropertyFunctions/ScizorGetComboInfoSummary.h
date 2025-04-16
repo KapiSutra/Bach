@@ -6,32 +6,32 @@
 #include "StateTreeExecutionContext.h"
 #include "StateTreePropertyFunctionBase.h"
 #include "Bach/Combo/ComboTypes.h"
-#include "Bach/Combo/Components/BachComboComponent.h"
-#include "BachGetComboInfoSummary.generated.h"
+#include "Bach/Combo/Components/ScizorComboComponent.h"
+#include "ScizorGetComboInfoSummary.generated.h"
 
-class UBachComboComponent;
+class UScizorComboComponent;
 
 USTRUCT()
-struct BACH_API FBachGetComboInfoSummaryInstanceData
+struct BACH_API FScizorGetComboInfoSummaryInstanceData
 {
     GENERATED_BODY()
 
     UPROPERTY(EditAnywhere, Category = Parameter)
-    TObjectPtr<UBachComboComponent> ComboComponent;
+    TObjectPtr<UScizorComboComponent> ComboComponent;
 
     UPROPERTY(EditAnywhere, Category = Output)
-    FBachComboInfoSummary Summary;
+    FScizorComboInfoSummary Summary;
 };
 
 /**
  * 
  */
 USTRUCT(DisplayName = "Combo Info Summary")
-struct BACH_API FBachGetComboInfoSummary : public FStateTreePropertyFunctionCommonBase
+struct BACH_API FScizorGetComboInfoSummary : public FStateTreePropertyFunctionCommonBase
 {
     GENERATED_BODY()
 
-    using FInstanceDataType = FBachGetComboInfoSummaryInstanceData;
+    using FInstanceDataType = FScizorGetComboInfoSummaryInstanceData;
 
     virtual const UStruct* GetInstanceDataType() const override
     {

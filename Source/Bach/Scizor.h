@@ -4,7 +4,7 @@
 
 #include "Modules/ModuleManager.h"
 
-class FBachModule : public IModuleInterface
+class FScizorModule final : public IModuleInterface
 {
 public:
 

@@ -8,10 +8,10 @@
 
 
 class UGameplayAbility;
-class UBachComboComponent;
+class UScizorComboComponent;
 
 UENUM(BlueprintType, meta=(Bitflags, UseEnumValuesAsMaskValuesInEditor = "true"))
-enum class EBachComboWindowState : uint8
+enum class EScizorComboWindowState : uint8
 {
     None = 0 UMETA(Hidden),
     NoCombo = 1 << 0 UMETA(DisplayName = "NoCombo"),
@@ -20,16 +20,16 @@ enum class EBachComboWindowState : uint8
     AfterComboWindow = 1 << 3 UMETA(DisplayName = "AfterComboWindow"),
 };
 
-ENUM_CLASS_FLAGS(EBachComboWindowState);
+ENUM_CLASS_FLAGS(EScizorComboWindowState);
 
 
 USTRUCT(BlueprintType)
-struct BACH_API FBachComboInfoSummary
+struct BACH_API FScizorComboInfoSummary
 {
     GENERATED_BODY()
 
     UPROPERTY(BlueprintReadOnly, EditAnywhere)
-    EBachComboWindowState ComboWindowState = EBachComboWindowState::NoCombo;
+    EScizorComboWindowState ComboWindowState = EScizorComboWindowState::NoCombo;
 
     UPROPERTY(BlueprintReadOnly, EditAnywhere)
     TObjectPtr<UAnimMontage> MontageAsset;
@@ -50,7 +50,7 @@ struct BACH_API FBachComboInfoSummary
 
 
 USTRUCT(BlueprintType)
-struct BACH_API FBachComboInputEventPayload
+struct BACH_API FScizorComboInputEventPayload
 {
     GENERATED_BODY()
 

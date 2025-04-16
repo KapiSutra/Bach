@@ -4,13 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "Treecko/Schema/TreeckoStateSchema.h"
-#include "BachComboSchema.generated.h"
+#include "ScizorComboSchema.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class BACH_API UBachComboSchema : public UTreeckoStateSchema
+class BACH_API UScizorComboSchema : public UTreeckoStateSchema
 {
     GENERATED_BODY()
 };
