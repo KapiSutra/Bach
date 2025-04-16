@@ -10,7 +10,7 @@
  * 
  */
 UCLASS()
-class BACH_API UScizorComboSchema : public UTreeckoStateSchema
+class SCIZOR_API UScizorComboSchema : public UTreeckoStateSchema
 {
     GENERATED_BODY()
 };

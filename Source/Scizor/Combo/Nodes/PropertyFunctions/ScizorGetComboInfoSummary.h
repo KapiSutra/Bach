@@ -5,14 +5,14 @@
 #include "CoreMinimal.h"
 #include "StateTreeExecutionContext.h"
 #include "StateTreePropertyFunctionBase.h"
-#include "Bach/Combo/ComboTypes.h"
-#include "Bach/Combo/Components/ScizorComboComponent.h"
+#include "Scizor/Combo/ComboTypes.h"
+#include "Scizor/Combo/Components/ScizorComboComponent.h"
 #include "ScizorGetComboInfoSummary.generated.h"
 
 class UScizorComboComponent;
 
 USTRUCT()
-struct BACH_API FScizorGetComboInfoSummaryInstanceData
+struct SCIZOR_API FScizorGetComboInfoSummaryInstanceData
 {
     GENERATED_BODY()
 
@@ -27,7 +27,7 @@ struct BACH_API FScizorGetComboInfoSummaryInstanceData
  * 
  */
 USTRUCT(DisplayName = "Combo Info Summary")
-struct BACH_API FScizorGetComboInfoSummary : public FStateTreePropertyFunctionCommonBase
+struct SCIZOR_API FScizorGetComboInfoSummary : public FStateTreePropertyFunctionCommonBase
 {
     GENERATED_BODY()
 

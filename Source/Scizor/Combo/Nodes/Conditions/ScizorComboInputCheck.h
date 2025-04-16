@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "StateTreeConditionBase.h"
 #include "StateTreeExecutionContext.h"
-#include "Bach/Combo/ComboTypes.h"
+#include "Scizor/Combo/ComboTypes.h"
 #include "ScizorComboInputCheck.generated.h"
 
 class UInputAction;
@@ -26,7 +26,7 @@ struct FBachComboInputCheckInstanceData
  * 
  */
 USTRUCT(DisplayName = "Combo Input Check (Scizor)")
-struct BACH_API FScizorComboInputCheck : public FStateTreeConditionCommonBase
+struct SCIZOR_API FScizorComboInputCheck : public FStateTreeConditionCommonBase
 {
     GENERATED_BODY()
 

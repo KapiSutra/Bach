@@ -5,11 +5,11 @@
 #include "CoreMinimal.h"
 #include "StateTreeExecutionContext.h"
 #include "StateTreePropertyFunctionBase.h"
-#include "Bach/Combo/Components/ScizorComboComponent.h"
+#include "Scizor/Combo/Components/ScizorComboComponent.h"
 #include "ScizorCheckComboWindowMatch.generated.h"
 
 USTRUCT()
-struct BACH_API FBachCheckComboWindowMatchInstanceData
+struct SCIZOR_API FBachCheckComboWindowMatchInstanceData
 {
     GENERATED_BODY()
 
@@ -30,7 +30,7 @@ struct BACH_API FBachCheckComboWindowMatchInstanceData
  * 
  */
 USTRUCT(DisplayName = "Match Combo Window")
-struct BACH_API FScizorCheckComboWindowMatch : public FStateTreePropertyFunctionCommonBase
+struct SCIZOR_API FScizorCheckComboWindowMatch : public FStateTreePropertyFunctionCommonBase
 {
     GENERATED_BODY()
 

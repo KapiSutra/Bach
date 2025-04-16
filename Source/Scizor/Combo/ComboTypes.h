@@ -24,7 +24,7 @@ ENUM_CLASS_FLAGS(EScizorComboWindowState);
 
 
 USTRUCT(BlueprintType)
-struct BACH_API FScizorComboInfoSummary
+struct SCIZOR_API FScizorComboInfoSummary
 {
     GENERATED_BODY()
 
@@ -50,7 +50,7 @@ struct BACH_API FScizorComboInfoSummary
 
 
 USTRUCT(BlueprintType)
-struct BACH_API FScizorComboInputEventPayload
+struct SCIZOR_API FScizorComboInputEventPayload
 {
     GENERATED_BODY()
 

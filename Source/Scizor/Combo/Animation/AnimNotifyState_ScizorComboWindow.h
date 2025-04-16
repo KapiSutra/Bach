@@ -10,16 +10,16 @@
  * 
  */
 UCLASS(DisplayName = "Combo Window (Scizor)")
-class BACH_API UAnimNotifyState_ScizorComboWindow : public UAnimNotify_PlayMontageNotifyWindow
+class SCIZOR_API UAnimNotifyState_ScizorComboWindow : public UAnimNotify_PlayMontageNotifyWindow
 {
-    GENERATED_BODY()
+	GENERATED_BODY()
 
-    UAnimNotifyState_ScizorComboWindow()
-    {
-        bIsNativeBranchingPoint = true;
-        NotifyName = TEXT("Scizor ComboWindow");
+	UAnimNotifyState_ScizorComboWindow()
+	{
+		bIsNativeBranchingPoint = true;
+		NotifyName = TEXT("Scizor ComboWindow");
 #if WITH_EDITOR
-        bShouldFireInEditor = false;
+		bShouldFireInEditor = false;
 #endif
-    }
+	}
 };

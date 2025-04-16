@@ -4,8 +4,8 @@
 #include "ScizorComboComponent.h"
 
 #include "StateTree.h"
-#include "Bach/Combo/Animation/AnimNotifyState_ScizorComboWindow.h"
-#include "Bach/Combo/Schema/ScizorComboSchema.h"
+#include "Scizor/Combo/Animation/AnimNotifyState_ScizorComboWindow.h"
+#include "Scizor/Combo/Schema/ScizorComboSchema.h"
 
 UE_DEFINE_GAMEPLAY_TAG(Tag_StateTreeEvent_BachComboInput, "StateTreeEvent.Bach.Combo.ComboInput");
 

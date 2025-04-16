@@ -31,7 +31,7 @@ struct FScizorIgnoreMoveInputInstanceData
  * 
  */
 USTRUCT(DisplayName = "Ignore Move Input (Scizor)")
-struct BACH_API FScizorIgnoreMoveInput : public FStateTreeTaskCommonBase
+struct SCIZOR_API FScizorIgnoreMoveInput : public FStateTreeTaskCommonBase
 {
     GENERATED_BODY()
 

@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "NativeGameplayTags.h"
-#include "Bach/Combo/ComboTypes.h"
+#include "Scizor/Combo/ComboTypes.h"
 #include "Treecko/Component/TreeckoStateComponent.h"
 #include "ScizorComboComponent.generated.h"
 
@@ -20,7 +20,7 @@ namespace Scizor
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FScizorCrossComboWindowDelegate, bool, bWindowOpen);
 
 UCLASS(ClassGroup=(Scizor), meta=(BlueprintSpawnableComponent))
-class BACH_API UScizorComboComponent : public UTreeckoStateComponent
+class SCIZOR_API UScizorComboComponent : public UTreeckoStateComponent
 {
 	GENERATED_BODY()
 
