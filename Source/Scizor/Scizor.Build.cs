@@ -31,6 +31,7 @@ public class Scizor : ModuleRules
             {
                 "Core",
                 // ... add other public dependencies that you statically link with here ...
+                "Treecko",
             }
         );
 
@@ -42,7 +43,6 @@ public class Scizor : ModuleRules
                 "Engine",
                 "Slate",
                 "SlateCore",
-                "Treecko",
                 "EnhancedInput",
                 "AnimGraphRuntime",
                 "GameplayTags",
