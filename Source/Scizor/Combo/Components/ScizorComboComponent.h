@@ -8,13 +8,15 @@
 #include "Treecko/Component/TreeckoStateComponent.h"
 #include "ScizorComboComponent.generated.h"
 
+#define SCIZOR_INPUT_TAG_LITERAL "Scizor.Combo.ComboInput"
+
 UE_DECLARE_GAMEPLAY_TAG_EXTERN(Tag_StateTreeEvent_BachComboInput);
 
 class UAnimNotify_PlayMontageNotifyWindow;
 
 namespace Scizor
 {
-	extern const FGameplayTag DefaultComboEventTag;
+    extern const FGameplayTag DefaultComboEventTag;
 }
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FScizorCrossComboWindowDelegate, bool, bWindowOpen);
@@ -22,40 +24,41 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FScizorCrossComboWindowDelegate, boo
 UCLASS(ClassGroup=(Scizor), meta=(BlueprintSpawnableComponent))
 class SCIZOR_API UScizorComboComponent : public UTreeckoStateComponent
 {
-	GENERATED_BODY()
+    GENERATED_BODY()
 
 public:
-	// Sets default values for this component's properties
-	UScizorComboComponent();
+    // Sets default values for this component's properties
+    UScizorComboComponent();
 
 protected:
-	// Called when the game starts
-	virtual void BeginPlay() override;
-	virtual bool SetContextRequirements(FStateTreeExecutionContext& Context, bool bLogErrors = false) override;
+    // Called when the game starts
+    virtual void BeginPlay() override;
+    virtual bool SetContextRequirements(FStateTreeExecutionContext& Context, bool bLogErrors = false) override;
 
-	virtual TSubclassOf<UStateTreeSchema> GetSchema() const override;
-	////
+    virtual TSubclassOf<UStateTreeSchema> GetSchema() const override;
+    ////
 public:
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
-	TSubclassOf<UAnimNotify_PlayMontageNotifyWindow> ComboWindowClass;
+    UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+    TSubclassOf<UAnimNotify_PlayMontageNotifyWindow> ComboWindowClass;
 
-	UPROPERTY(BlueprintAssignable)
-	FScizorCrossComboWindowDelegate OnCrossComboWindow;
+    UPROPERTY(BlueprintAssignable)
+    FScizorCrossComboWindowDelegate OnCrossComboWindow;
 
-	UFUNCTION(BlueprintPure)
-	FScizorComboInfoSummary GetComboInfoSummary() const;
+    UFUNCTION(BlueprintPure)
+    FScizorComboInfoSummary GetComboInfoSummary() const;
 
-	FScizorComboInfoSummary ComboInfoSummaryCache;
+    FScizorComboInfoSummary ComboInfoSummaryCache;
 
-	UFUNCTION(BlueprintCallable, meta=(CPP_Default_Tag = "StateTreeEvent.Bach.Combo.ComboInput", CPP_Default_Payload))
-	void SendComboInputEvent(const FGameplayTag Tag = Scizor::DefaultComboEventTag,
-	                         const TInstancedStruct<FScizorComboInputEventPayload>& Payload = {});
+    UFUNCTION(BlueprintCallable,
+        meta=(CPP_Default_Tag = "Scizor.Combo.ComboInput", CPP_Default_Payload, AutoCreateRefTerm="Payload"))
+    void SendComboInputEvent(const FGameplayTag Tag = Scizor::DefaultComboEventTag,
+                             const TInstancedStruct<FScizorComboInputEventPayload>& Payload = {});
 
 protected:
-	UFUNCTION()
-	void HandleAvatarMontageNotify(FName NotifyName, const FBranchingPointNotifyPayload& BranchingPointPayload);
-	UFUNCTION()
-	void HandleMeshAnimInitialized();
-	UFUNCTION()
-	void HandleActorContextUpdated();
+    UFUNCTION()
+    void HandleAvatarMontageNotify(FName NotifyName, const FBranchingPointNotifyPayload& BranchingPointPayload);
+    UFUNCTION()
+    void HandleMeshAnimInitialized();
+    UFUNCTION()
+    void HandleActorContextUpdated();
 };

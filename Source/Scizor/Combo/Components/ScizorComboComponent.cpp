@@ -7,7 +7,7 @@
 #include "Scizor/Combo/Animation/AnimNotifyState_ScizorComboWindow.h"
 #include "Scizor/Combo/Schema/ScizorComboSchema.h"
 
-UE_DEFINE_GAMEPLAY_TAG(Tag_StateTreeEvent_BachComboInput, "Scizor.Combo.ComboInput");
+UE_DEFINE_GAMEPLAY_TAG(Tag_StateTreeEvent_BachComboInput, SCIZOR_INPUT_TAG_LITERAL);
 
 namespace Scizor
 {
