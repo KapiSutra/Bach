@@ -13,6 +13,4 @@ UCLASS()
 class SCIZOR_API UScizorComboLibrary : public UBlueprintFunctionLibrary
 {
     GENERATED_BODY()
-
-public:
 };

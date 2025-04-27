@@ -45,7 +45,6 @@ struct SCIZOR_API FScizorComboInfoSummary
 
     UPROPERTY(BlueprintReadOnly, EditAnywhere)
     float CurrentComboWindowDuration = -1.f;
-
 };
 
 
@@ -57,4 +56,3 @@ struct SCIZOR_API FScizorComboInputEventPayload
     UPROPERTY(BlueprintReadWrite)
     TObjectPtr<UInputAction> InputAction;
 };
-
