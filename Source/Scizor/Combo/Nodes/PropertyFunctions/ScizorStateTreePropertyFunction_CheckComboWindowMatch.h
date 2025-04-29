@@ -6,15 +6,15 @@
 #include "StateTreeExecutionContext.h"
 #include "StateTreePropertyFunctionBase.h"
 #include "Scizor/Combo/Components/ScizorComboComponent.h"
-#include "ScizorCheckComboWindowMatch.generated.h"
+#include "ScizorStateTreePropertyFunction_CheckComboWindowMatch.generated.h"
 
 USTRUCT()
-struct SCIZOR_API FBachCheckComboWindowMatchInstanceData
+struct SCIZOR_API FScizorStateTreePropertyFunction_CheckComboWindowMatch_InstanceData
 {
     GENERATED_BODY()
 
-    UPROPERTY(EditAnywhere, Category = Parameter)
-    TObjectPtr<UScizorComboComponent> ComboComponent;
+    UPROPERTY(EditAnywhere, Category = Context)
+    TObjectPtr<UScizorComboComponent> StateTreeComponent;
 
     UPROPERTY(EditAnywhere, Category = Parameter,
         meta=(Bitmask, BitmaskEnum="/Script/Scizor.EScizorComboWindowState"))
@@ -29,12 +29,12 @@ struct SCIZOR_API FBachCheckComboWindowMatchInstanceData
 /**
  * 
  */
-USTRUCT(DisplayName = "Match Combo Window")
-struct SCIZOR_API FScizorCheckComboWindowMatch : public FStateTreePropertyFunctionCommonBase
+USTRUCT(DisplayName = "Match Combo Window (Scizor)")
+struct SCIZOR_API FScizorStateTreePropertyFunction_CheckComboWindowMatch : public FStateTreePropertyFunctionCommonBase
 {
     GENERATED_BODY()
 
-    using FInstanceDataType = FBachCheckComboWindowMatchInstanceData;
+    using FInstanceDataType = FScizorStateTreePropertyFunction_CheckComboWindowMatch_InstanceData;
 
     virtual const UStruct* GetInstanceDataType() const override { return FInstanceDataType::StaticStruct(); }
 

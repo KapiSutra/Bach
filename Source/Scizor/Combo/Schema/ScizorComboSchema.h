@@ -13,4 +13,9 @@ UCLASS()
 class SCIZOR_API UScizorComboSchema : public UTreeckoStateSchema
 {
     GENERATED_BODY()
+
+    UScizorComboSchema()
+    {
+        StateTreeComponentType = UScizorComboComponent::StaticClass();
+    };
 };

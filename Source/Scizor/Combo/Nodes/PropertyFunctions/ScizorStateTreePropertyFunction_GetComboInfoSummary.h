@@ -7,12 +7,12 @@
 #include "StateTreePropertyFunctionBase.h"
 #include "Scizor/Combo/ComboTypes.h"
 #include "Scizor/Combo/Components/ScizorComboComponent.h"
-#include "ScizorGetComboInfoSummary.generated.h"
+#include "ScizorStateTreePropertyFunction_GetComboInfoSummary.generated.h"
 
 class UScizorComboComponent;
 
 USTRUCT()
-struct SCIZOR_API FScizorGetComboInfoSummaryInstanceData
+struct SCIZOR_API FScizorStateTreePropertyFunction_GetComboInfoSummary_InstanceData
 {
     GENERATED_BODY()
 
@@ -26,12 +26,12 @@ struct SCIZOR_API FScizorGetComboInfoSummaryInstanceData
 /**
  * 
  */
-USTRUCT(DisplayName = "Combo Info Summary")
-struct SCIZOR_API FScizorGetComboInfoSummary : public FStateTreePropertyFunctionCommonBase
+USTRUCT(DisplayName = "Combo Info Summary (Scizor)")
+struct SCIZOR_API FScizorPropertyFunction_GetComboInfoSummary : public FStateTreePropertyFunctionCommonBase
 {
     GENERATED_BODY()
 
-    using FInstanceDataType = FScizorGetComboInfoSummaryInstanceData;
+    using FInstanceDataType = FScizorStateTreePropertyFunction_GetComboInfoSummary_InstanceData;
 
     virtual const UStruct* GetInstanceDataType() const override
     {

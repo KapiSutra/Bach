@@ -6,12 +6,12 @@
 #include "StateTreeConditionBase.h"
 #include "StateTreeExecutionContext.h"
 #include "Scizor/Combo/ComboTypes.h"
-#include "ScizorComboInputCheck.generated.h"
+#include "ScizorStateTreeCondition_ComboInputCheck.generated.h"
 
 class UInputAction;
 
 USTRUCT()
-struct FBachComboInputCheckInstanceData
+struct FScizorStateTreeCondition_ComboInputCheck_InstanceData
 {
     GENERATED_BODY()
 
@@ -26,11 +26,11 @@ struct FBachComboInputCheckInstanceData
  * 
  */
 USTRUCT(DisplayName = "Combo Input Check (Scizor)")
-struct SCIZOR_API FScizorComboInputCheck : public FStateTreeConditionCommonBase
+struct SCIZOR_API FScizorStateTreeCondition_ComboInputCheck : public FStateTreeConditionCommonBase
 {
     GENERATED_BODY()
 
-    using FInstanceDataType = FBachComboInputCheckInstanceData;
+    using FInstanceDataType = FScizorStateTreeCondition_ComboInputCheck_InstanceData;
     virtual const UStruct* GetInstanceDataType() const override { return FInstanceDataType::StaticStruct(); };
 
     virtual bool TestCondition(FStateTreeExecutionContext& Context) const override
