@@ -4,6 +4,7 @@
 #include "ScizorComboComponent.h"
 
 #include "StateTree.h"
+#include "Kismet/KismetSystemLibrary.h"
 #include "Scizor/Combo/Animation/AnimNotifyState_ScizorComboWindow.h"
 #include "Scizor/Combo/Schema/ScizorComboSchema.h"
 
@@ -49,6 +50,14 @@ void UScizorComboComponent::BeginPlay()
 FScizorComboInfoSummary UScizorComboComponent::GetComboInfoSummary() const
 {
     // TODO: Cache In Each Tick
+    const auto CurrentFrameCount = UKismetSystemLibrary::GetFrameCount();
+
+    if (LastSummaryFrameCount == CurrentFrameCount)
+    {
+        return SummaryCache;
+    }
+
+    LastSummaryFrameCount = UKismetSystemLibrary::GetFrameCount();
 
     const auto Owner = ActorContext.Owner;
     const auto Avatar = ActorContext.Avatar;
@@ -57,21 +66,24 @@ FScizorComboInfoSummary UScizorComboComponent::GetComboInfoSummary() const
 
     if (!Owner || !Avatar || !MeshComponent || !AbilitySystemComponent)
     {
-        return {};
+        SummaryCache = {};
+        return SummaryCache;
     }
 
     const auto AnimInstance = MeshComponent->GetAnimInstance();
 
     if (!AnimInstance || !AnimInstance->IsAnyMontagePlaying())
     {
-        return {};
+        SummaryCache = {};
+        return SummaryCache;
     }
 
     const auto MontageInstance = AnimInstance->GetActiveMontageInstance();
 
     if (!MontageInstance)
     {
-        return {};
+        SummaryCache = {};
+        return SummaryCache;
     }
 
     bool IsInComboWindow = false;
@@ -108,7 +120,8 @@ FScizorComboInfoSummary UScizorComboComponent::GetComboInfoSummary() const
 
     if (!ComboNSEvent)
     {
-        return {};
+        SummaryCache = {};
+        return SummaryCache;
     }
 
     const auto StartTime = ComboNSEvent->GetNotify()->GetTriggerTime();
@@ -140,7 +153,8 @@ FScizorComboInfoSummary UScizorComboComponent::GetComboInfoSummary() const
         Result.ComboWindowState = EScizorComboWindowState::AfterComboWindow;
     }
 
-    return Result;
+    SummaryCache = Result;
+    return SummaryCache;
 }
 
 void UScizorComboComponent::SendComboInputEvent(const FGameplayTag Tag,

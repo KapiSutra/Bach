@@ -61,4 +61,7 @@ protected:
     void HandleMeshAnimInitialized();
     UFUNCTION()
     void HandleActorContextUpdated();
+
+    mutable int32 LastSummaryFrameCount = 0;
+    mutable FScizorComboInfoSummary SummaryCache;
 };
