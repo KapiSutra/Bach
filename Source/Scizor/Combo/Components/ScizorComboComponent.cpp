@@ -62,9 +62,9 @@ FScizorComboInfoSummary UScizorComboComponent::GetComboInfoSummary() const
     const auto Owner = ActorContext.Owner;
     const auto Avatar = ActorContext.Avatar;
     const auto MeshComponent = ActorContext.MeshComponent;
-    const auto AbilitySystemComponent = ActorContext.AbilitySystemComponent;
+    const auto Asc = ActorContext.AbilitySystemComponent;
 
-    if (!Owner || !Avatar || !MeshComponent || !AbilitySystemComponent)
+    if (!Owner || !Avatar || !MeshComponent || !Asc)
     {
         SummaryCache = {};
         return SummaryCache;
