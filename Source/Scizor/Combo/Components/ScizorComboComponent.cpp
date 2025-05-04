@@ -97,6 +97,7 @@ FScizorComboInfoSummary UScizorComboComponent::GetComboInfoSummary() const
         if (Event.NotifyStateClass && Event.NotifyStateClass.IsA(ComboWindowClass))
         {
             IsInComboWindow = true;
+            break;
         }
     }
 
