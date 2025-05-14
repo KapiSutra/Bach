@@ -191,8 +191,18 @@ void UScizorComboComponent::HandleMeshAnimInitialized()
 }
 
 
-void UScizorComboComponent::HandleActorContextUpdated()
+void UScizorComboComponent::HandleActorContextUpdated(const FTreeckoStateTreeActorContext& OldContext)
 {
+    if (OldContext.MeshComponent)
+    {
+        OldContext.MeshComponent->OnAnimInitialized.RemoveAll(this);
+        // if (const auto OldAnimInstance = OldContext.MeshComponent->GetAnimInstance())
+        // {
+        //     OldAnimInstance->OnPlayMontageNotifyBegin.RemoveAll(this);
+        //     OldAnimInstance->OnPlayMontageNotifyEnd.RemoveAll(this);
+        // }
+    }
+
     if (ActorContext.MeshComponent)
     {
         ActorContext.MeshComponent->OnAnimInitialized.AddUniqueDynamic(this, &ThisClass::HandleMeshAnimInitialized);

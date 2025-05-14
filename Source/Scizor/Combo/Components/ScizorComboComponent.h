@@ -60,7 +60,7 @@ protected:
     UFUNCTION()
     void HandleMeshAnimInitialized();
     UFUNCTION()
-    void HandleActorContextUpdated();
+    void HandleActorContextUpdated(const FTreeckoStateTreeActorContext& OldContext);
 
     mutable int32 LastSummaryFrameCount = 0;
     mutable FScizorComboInfoSummary SummaryCache;
