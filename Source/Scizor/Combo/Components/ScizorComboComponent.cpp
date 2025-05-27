@@ -49,7 +49,7 @@ void UScizorComboComponent::BeginPlay()
 
 FScizorComboInfoSummary UScizorComboComponent::GetComboInfoSummary() const
 {
-    // TODO: Cache In Each Tick
+    // Cache In Each Tick
     const auto CurrentFrameCount = UKismetSystemLibrary::GetFrameCount();
 
     if (LastSummaryFrameCount == CurrentFrameCount)
