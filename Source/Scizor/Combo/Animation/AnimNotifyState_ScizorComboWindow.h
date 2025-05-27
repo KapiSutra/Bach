@@ -17,7 +17,7 @@ class SCIZOR_API UAnimNotifyState_ScizorComboWindow : public UAnimNotify_PlayMon
 	UAnimNotifyState_ScizorComboWindow()
 	{
 		bIsNativeBranchingPoint = true;
-		NotifyName = TEXT("Combo Window");
+		NotifyName = TEXT("Combo Window (Scizor)");
 #if WITH_EDITOR
 		bShouldFireInEditor = false;
 #endif

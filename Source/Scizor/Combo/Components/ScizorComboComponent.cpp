@@ -116,7 +116,8 @@ FScizorComboInfoSummary UScizorComboComponent::GetComboInfoSummary() const
 
     const auto ComboNSEvent = Context.ActiveNotifies.FindByPredicate([&](const FAnimNotifyEventReference& Event)
     {
-        return Event.GetNotify()->NotifyStateClass.IsA(ComboWindowClass);
+        return Event.GetNotify()->GetEndTriggerTime() >= CurrentPosition && Event.GetNotify()->NotifyStateClass.IsA(
+            ComboWindowClass);
     });
 
     if (!ComboNSEvent)
