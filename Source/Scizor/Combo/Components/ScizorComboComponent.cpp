@@ -111,14 +111,16 @@ FScizorComboInfoSummary UScizorComboComponent::GetComboInfoSummary() const
                                                         CurrentSectionStartTime, CurrentSectionEndTime);
 
     FAnimNotifyContext Context;
-    MontageAsset->GetAnimNotifiesFromDeltaPositions(CurrentSectionStartTime, CurrentSectionEndTime,
-                                                    Context);
+    MontageAsset->GetAnimNotifiesFromDeltaPositions(
+        CurrentSectionStartTime + 0.001f, // Prevent retrieving last section's end
+        CurrentSectionEndTime,
+        Context);
 
-    const auto ComboNSEvent = Context.ActiveNotifies.FindByPredicate([&](const FAnimNotifyEventReference& Event)
-    {
-        return Event.GetNotify()->GetEndTriggerTime() >= CurrentPosition && Event.GetNotify()->NotifyStateClass.IsA(
-            ComboWindowClass);
-    });
+    const auto ComboNSEvent = Context.ActiveNotifies.FindByPredicate(
+        [this](const FAnimNotifyEventReference& Event)
+        {
+            return Event.GetNotify()->NotifyStateClass.IsA(ComboWindowClass);
+        });
 
     if (!ComboNSEvent)
     {
