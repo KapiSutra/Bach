@@ -17,5 +17,6 @@ class SCIZOR_API UScizorComboSchema : public UTreeckoStateSchema
     UScizorComboSchema()
     {
         StateTreeComponentType = UScizorComboComponent::StaticClass();
+        ContextDataDescs[2].Struct = StateTreeComponentType.Get();
     };
 };
